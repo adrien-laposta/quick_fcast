@@ -37,7 +37,7 @@ Dl_dict = fcast_utils.get_spectra(lmin, lmax, params)
 ######################
 ##### Load noise #####
 ######################
-Nl_dict = get_noise_dict(noise_file, lmin, lmax)
+Nl_dict = fcast_utils.get_noise_dict(noise_file, lmin, lmax)
 print("Noise dict loaded.")
 ######################
 ######################
