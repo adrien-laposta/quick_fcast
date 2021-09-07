@@ -3,7 +3,7 @@ import numpy as np
 from itertools import combinations_with_replacement as cwr
 
 def cl_to_dl_class(ell, cl):
-    dl = ell * (ell + 1) * cl / (2 * np.pi)
+    dl = ell * (ell + 1) * cl / (2 * np.pi) * pow(2.7255, 2)
     return(1e12 * dl)
 
 def get_spectra(lmin, lmax, params):
