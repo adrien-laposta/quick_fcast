@@ -1,0 +1,25 @@
+params:
+  #100*theta_s: 1.04092
+  h: 0.6736
+  logA: 3.044
+  n_s: 0.9649
+  tau_reio: 0.0544
+  omega_b: 0.02237
+  omega_cdm: 0.1200
+  varying_alpha: 1.0
+
+fsky: 0.4
+nsplits: 2
+pars_to_constrain: ['h', 'omega_b', 'omega_cdm', 'varying_alpha']
+
+modes: ["TT", "TE", "EE"]
+
+lmin: 100
+lmax: 4500
+
+# temperature noise power spectrum
+noise_T_file: null
+# polarization noise power spectrum
+noise_E_file: null
+# output_file to save figs/logs
+output_file: SO_fisher_cvl/
