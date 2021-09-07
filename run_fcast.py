@@ -41,7 +41,7 @@ Dl_dict = fcast_utils.get_spectra(lmin, lmax, params)
 if noise_T_file is not None:
 
     ell_T, nl_T = np.loadtxt(noise_T_file, unpack = True)
-    id = np.where((ell_T >= lmin["TT"]) & (ell_T <= lmax["TT"]))
+    id = np.where((ell_T >= lmin) & (ell_T <= lmax))
     nl_T = nl_T[id]
 
 else:
@@ -51,7 +51,7 @@ else:
 if noise_E_file is not None:
 
     ell_E, nl_E = np.loadtxt(noise_E_file, unpack = True)
-    id = np.where((ell_E >= lmin["EE"]) & (ell_E <= lmax["EE"]))
+    id = np.where((ell_E >= lmin) & (ell_E <= lmax))
     nl_E = nl_E[id]
 
 else:
