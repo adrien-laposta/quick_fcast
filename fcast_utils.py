@@ -6,6 +6,26 @@ def cl_to_dl_class(ell, cl):
     dl = ell * (ell + 1) * cl / (2 * np.pi) * pow(2.7255, 2)
     return(1e12 * dl)
 
+def get_noise_dict(noise_file, lmin, lmax):
+    if noise_file is not None:
+        ell, nl_t = np.loadtxt(noise_file % "t", unpack = True)
+        ell, nl_p = np.loadtxt(noise_file % "pol", unpack = True)
+        id = np.where((ell >= lmin) & (ell <= lmax))
+
+        nl_t = nl_t[id]
+        nl_p = nl_p[id]
+
+    else:
+        nl_t = np.zeros(lmax+1-lmin)
+        nl_p = np.zeros(lmax+1-lmin)
+
+    Nl = {"TT": nl_t,
+          "TE": np.zeros_like(nl_t),
+          "ET": np.zeros_like(nl_t),
+          "EE": nl_p}
+
+    return(Nl)
+
 def get_spectra(lmin, lmax, params):
 
     classSettings = params.copy()

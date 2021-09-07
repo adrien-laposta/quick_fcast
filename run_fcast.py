@@ -24,8 +24,7 @@ nsplits = info["nsplits"]
 fsky = info["fsky"]
 constrainedPars = info["pars_to_constrain"]
 
-noise_T_file = info["noise_T_file"]
-noise_E_file = info["noise_E_file"]
+noise_file = info["noise_file"]
 
 output_dir = info["output_file"]
 ############################
@@ -38,30 +37,7 @@ Dl_dict = fcast_utils.get_spectra(lmin, lmax, params)
 ######################
 ##### Load noise #####
 ######################
-if noise_T_file is not None:
-
-    ell_T, nl_T = np.loadtxt(noise_T_file, unpack = True)
-    id = np.where((ell_T >= lmin) & (ell_T <= lmax))
-    nl_T = nl_T[id]
-
-else:
-
-    nl_T = np.zeros_like(Dl_dict["TT"])
-
-if noise_E_file is not None:
-
-    ell_E, nl_E = np.loadtxt(noise_E_file, unpack = True)
-    id = np.where((ell_E >= lmin) & (ell_E <= lmax))
-    nl_E = nl_E[id]
-
-else:
-
-    nl_E = np.zeros_like(Dl_dict["EE"])
-
-Nl_dict = {"TT": nl_T,
-           "TE": np.zeros_like(Dl_dict["TE"]),
-           "ET": np.zeros_like(Dl_dict["TE"]),
-           "EE": nl_E}
+Nl_dict = get_noise_dict(noise_file, lmin, lmax)
 print("Noise dict loaded.")
 ######################
 ######################

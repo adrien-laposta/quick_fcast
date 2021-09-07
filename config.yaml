@@ -12,14 +12,16 @@ fsky: 0.4
 nsplits: 2
 pars_to_constrain: ['h', 'omega_b', 'omega_cdm', 'varying_alpha']
 
-modes: ["TT", "TE", "EE"]
-
 lmin: 100
 lmax: 4500
 
+modes: ["TT", "TE", "EE"]
+freqs: [93, 145, 225]
+
+use_fgs: True
+fg_file: foregrounds/%s_all_%dx%d.dat
+
 # temperature noise power spectrum
-noise_T_file: null
-# polarization noise power spectrum
-noise_E_file: null
+noise_file: noise_ps/noise_%s.dat
 # output_file to save figs/logs
 output_file: SO_fisher_cvl/
